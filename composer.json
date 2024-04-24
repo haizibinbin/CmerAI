@@ -1,0 +1,16 @@
+{
+    "name": "bill/cmer-ai",
+    "description": "CmerAI PHP SDK",
+    "autoload": {
+        "psr-4": {
+            "Bill\\CmerAi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hbb",
+            "email": "haizibinbin@gmail.com"
+        }
+    ],
+    "require": {}
+}
