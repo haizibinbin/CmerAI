@@ -1,12 +1,12 @@
 <?php
 
-namespace Bill\CmerAi;
+namespace Hbb\CmerAi;
 
 
-use Bill\CmerAi\models\BizChatModel;
-use Bill\CmerAi\models\ChatModel;
-use Bill\CmerAi\models\EmbeddingModel;
-use Bill\CmerAi\models\PutEmbeddingByCos;
+use Hbb\CmerAi\models\BizChatModel;
+use Hbb\CmerAi\models\ChatModel;
+use Hbb\CmerAi\models\EmbeddingModel;
+use Hbb\CmerAi\models\PutEmbeddingByCos;
 use Dotenv\Dotenv;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;

@@ -1,9 +1,8 @@
 {
-    "name": "bill/cmer-ai",
-    "description": "CmerAI PHP SDK",
+    "name": "hbb/cmer-ai",
     "autoload": {
         "psr-4": {
-            "Bill\\CmerAi\\": "src/"
+            "Hbb\\CmerAi\\": "src/"
         }
     },
     "authors": [

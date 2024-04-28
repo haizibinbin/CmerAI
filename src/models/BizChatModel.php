@@ -1,6 +1,6 @@
 <?php
 
-namespace Bill\CmerAi\models;
+namespace Hbb\CmerAi\models;
 
 
 /**
