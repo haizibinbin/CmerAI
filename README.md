@@ -26,13 +26,13 @@ $messages = [
 ];
 
 # 请求体 - 负责组装请求参数
-$body = new \Bill\CmerAi\models\ChatModel($messages);
+$body = new \Hbb\CmerAi\models\ChatModel($messages);
 
 # 更换默认参数
 $body->model = 'gpt-3.5-turbo-0125';  # 默认gpt-3.5-turbo-1106
 
 # 请求启动器 - 负责发起请求
-$cmerai = new \Bill\CmerAi\CmerAi();
+$cmerai = new \Hbb\CmerAi\CmerAi();
 
 # 发起请求
 $res = $cmerai->openai_chat($body);
