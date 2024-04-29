@@ -35,6 +35,7 @@ class CmerAi
     {
         $dotenv = Dotenv::createImmutable(__DIR__ . '../../');
         $dotenv->load();
+        $dotenv->required(['apikey', 'X_CmerApi_Host'])->notEmpty();
         $this->headers['apikey'] = $_ENV['apikey'];
         $this->headers['X-CmerApi-Host'] = $_ENV['X_CmerApi_Host'];
     }
