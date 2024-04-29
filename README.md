@@ -4,8 +4,14 @@
 > 作者：BILL  
 > CmerAI PHP SDK 是为了方便PHP开发者调用CmerAI提供的API接口而开发的SDK工具包。  
 > 接口文档：https://apihub.cmer.com/docs/aiccgpt.html  
-> 务必要浏览接口文档，此SDK是对文档上的路由请求做了封装，
+> 务必要浏览接口文档，此SDK是对文档上的路由请求做了封装
 
+
+## 安装
+
+```shell
+composer require hbb/cmer-ai
+```
 
 ## 在 `composer.json` 文件的同级目录下配置环境变量到`.env`文件
 
