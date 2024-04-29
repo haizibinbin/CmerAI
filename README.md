@@ -3,7 +3,8 @@
 
 > 作者：BILL  
 > CmerAI PHP SDK 是为了方便PHP开发者调用CmerAI提供的API接口而开发的SDK工具包。  
-> 接口文档：https://apihub.cmer.com/docs/aiccgpt.html
+> 接口文档：https://apihub.cmer.com/docs/aiccgpt.html  
+> 务必要浏览接口文档，此SDK是对文档上的路由请求做了封装，
 
 
 ## 在 `composer.json` 文件的同级目录下配置环境变量到`.env`文件
@@ -20,7 +21,6 @@ X_CmerApi_Host=XXXXXXXXXX
 require_once 'vendor/autoload.php';
 
 
-
 $messages = [
     ['role' => 'user', 'content' => '写100字的文案']
 ];
@@ -34,7 +34,7 @@ $body->model = 'gpt-3.5-turbo-0125';  # 默认gpt-3.5-turbo-1106
 # 请求启动器 - 负责发起请求
 $cmerai = new \Hbb\CmerAi\CmerAi();
 
-# 发起请求
+# 发起请求，函数名：openai_chat 对应接口文档中的路由: /v1/openai/chat
 $res = $cmerai->openai_chat($body);
 var_dump($res);
 
