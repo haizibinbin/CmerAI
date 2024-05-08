@@ -7,7 +7,6 @@ use Hbb\CmerAi\models\BizChatModel;
 use Hbb\CmerAi\models\ChatModel;
 use Hbb\CmerAi\models\EmbeddingModel;
 use Hbb\CmerAi\models\PutEmbeddingByCos;
-use Dotenv\Dotenv;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
@@ -31,14 +30,10 @@ class CmerAi
     protected $host = 'https://api.cmer.com/v1/';
 
 
-    public function __construct()
+    public function __construct(string $apikey, string $X_CmerApi_Host)
     {
-        # composer 安装到vendor目录下，路径为：vendor/hbb/cmer-ai/src, 所以是../../../，而开发测试时为: ../../
-        $dotenv = Dotenv::createImmutable(__DIR__ . '../../../');
-        $dotenv->load();
-        $dotenv->required(['apikey', 'X_CmerApi_Host'])->notEmpty();
-        $this->headers['apikey'] = $_ENV['apikey'];
-        $this->headers['X-CmerApi-Host'] = $_ENV['X_CmerApi_Host'];
+        $this->headers['apikey'] = $apikey;
+        $this->headers['X-CmerApi-Host'] = $X_CmerApi_Host;
     }
 
 

@@ -14,13 +14,6 @@
 composer require hbb/cmer-ai
 ```
 
-## 在 `composer.json` 文件的同级目录下配置环境变量到`.env`文件
-
-```shell
-apikey=XXXXXXXXXX
-X_CmerApi_Host=XXXXXXXXXX
-```
-
 ## 快速开始
 
 ```php
@@ -38,8 +31,13 @@ $body = new \Hbb\CmerAi\models\ChatModel($messages);
 # 更换默认参数
 $body->model = 'gpt-3.5-turbo-0125';  # 默认gpt-3.5-turbo-1106
 
+# 配置网关授权参数
+$apikey = 'xxxxxxxxxx';
+$X_CmerApi_Host = 'xxxxxxxxxx';
+# 网关授权参数配置OK
+
 # 请求启动器 - 负责发起请求
-$cmerai = new \Hbb\CmerAi\CmerAi();
+$cmerai = new \Hbb\CmerAi\CmerAi($apikey, $X_CmerApi_Host);
 
 # 发起请求，函数名：openai_chat 对应接口文档中的路由: /v1/openai/chat
 $res = $cmerai->openai_chat($body);
