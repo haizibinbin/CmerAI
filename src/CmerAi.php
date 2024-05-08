@@ -33,7 +33,8 @@ class CmerAi
 
     public function __construct()
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . '../../');
+        # composer 安装到vendor目录下，路径为：vendor/hbb/cmer-ai/src, 所以是../../../，而开发测试时为: ../../
+        $dotenv = Dotenv::createImmutable(__DIR__ . '../../../');
         $dotenv->load();
         $dotenv->required(['apikey', 'X_CmerApi_Host'])->notEmpty();
         $this->headers['apikey'] = $_ENV['apikey'];
