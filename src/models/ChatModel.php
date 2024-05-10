@@ -64,7 +64,23 @@ class ChatModel extends BaseModel
 
     public function __construct(array $messages)
     {
-        $this->messages = $messages;
+        $this->messages = $this->filterMessage($messages);
+    }
+
+
+    /**
+     * @param array $messages
+     * @return void
+     * 过滤Message里面的content 为  null的，转空字符
+     */
+    public function filterMessage(array $messages)
+    {
+        foreach ($messages as $key => $message) {
+            if (empty($message['content'])) {
+                $messages[$key]['content'] = '';
+            }
+        }
+        return $messages;
     }
 
 }
