@@ -3,8 +3,8 @@
 
 > 作者：BILL  
 > CmerAI PHP SDK 是为了方便PHP开发者调用CmerAI提供的API接口而开发的SDK工具包。 
-> 此库只有请求API的代码，没有任务业务逻辑。  
-> 查看接口文档：https://apihub.cmer.com/docs/aiccgpt.html 了解API参数。  
+> 此库只有API的代码，没有任何业务逻辑。  
+> 要了解API接口参数，请查看接口文档：https://apihub.cmer.com/docs/aiccgpt.html    
 > 务必要浏览接口文档，此SDK是对文档上的路由请求做了封装  
 > 此SDK适用于 laravel7
 
