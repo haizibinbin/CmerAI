@@ -3,6 +3,7 @@
 namespace Hbb\CmerAi;
 
 
+use GuzzleHttp\Psr7\Response;
 use Hbb\CmerAi\models\BizChatModel;
 use Hbb\CmerAi\models\ChatModel;
 use Hbb\CmerAi\models\EmbeddingModel;
@@ -42,11 +43,11 @@ class CmerAi
      * @param string $method
      * @param array $body
      * @param array $query
-     * @return array
+     * @return Response
      * @throws \GuzzleHttp\Exception\GuzzleException
      * 发起请求
      */
-    public function http(string $endpoint, string $method, array $body = [], array $query = [])
+    public function http(string $endpoint, string $method, array $body = [], array $query = []): Response
     {
         $client = new Client([
             'base_uri' => $this->host,
@@ -65,10 +66,9 @@ class CmerAi
             $options['json'] = $body;
 
         try {
-            $response = $client->request($method, $endpoint, $options);
-            return ['code' => $response->getStatusCode(), 'body' => $response->getBody()->getContents()];
+            return $client->request($method, $endpoint, $options);
         } catch (RequestException $exception) {
-            return ['code' => 500, 'body' => $exception->getMessage()];
+            return new Response(500, [], $exception->getMessage());
         }
     }
 
@@ -78,7 +78,7 @@ class CmerAi
      * @param string $method
      * @param array $body
      * @param array $query
-     * @return array
+     * @return
      * @throws \GuzzleHttp\Exception\GuzzleException
      * 流式响应请求
      */
@@ -103,10 +103,9 @@ class CmerAi
         $options['stream'] = true;
 
         try {
-            $response = $client->request($method, $endpoint, $options);
-            return ['code' => $response->getStatusCode(), 'body' => $response->getBody()];
+            return $client->request($method, $endpoint, $options);
         } catch (RequestException $exception) {
-            return ['code' => 500, 'body' => $exception->getMessage()];
+            return new Response(500, [], $exception->getMessage());
         }
     }
 

@@ -27,10 +27,10 @@ $messages = [
 ];
 
 # 请求体 - 负责组装请求参数
-$body = new \Hbb\CmerAi\models\ChatModel($messages);
+$payload = new \Hbb\CmerAi\models\ChatModel($messages);
 
 # 更换默认参数
-$body->model = 'gpt-3.5-turbo-0125';  # 默认gpt-3.5-turbo-1106
+$payload->model = 'gpt-3.5-turbo-0125';  # 默认gpt-3.5-turbo-1106
 
 # 配置网关授权参数
 $apikey = 'xxxxxxxxxx';
@@ -38,24 +38,25 @@ $X_CmerApi_Host = 'xxxxxxxxxx';
 # 网关授权参数配置OK
 
 # 请求启动器 - 负责发起请求
-$cmerai = new \Hbb\CmerAi\CmerAi($apikey, $X_CmerApi_Host);
+$payload = new \Hbb\CmerAi\CmerAi($apikey, $X_CmerApi_Host);
 
 # 发起请求，函数名：openai_chat 对应接口文档中的路由: /v1/openai/chat
-$res = $cmerai->openai_chat($body);
-var_dump($res);
+$response = $cmerai->openai_chat($payload);
+var_dump($response->getBody()->getContents());
 
 # 流式响应
-$res_stream = $cmerai->openai_chat_stream($body);
-if ($res_stream['code'] == 200)
+$response = $cmerai->openai_chat_stream($payload);
+if ($response->getStatusCode() == 200)
 {
-    $stream = $res_stream['body'];
-    // 从流中逐行读取数据
-    while (!$stream->eof()) {
-        echo $stream->read(1024); // 读取流中的数据
+    $body = $response->getBody();
+    if ($body instanceof \GuzzleHttp\Psr7\Stream)
+    {
+        // 从流中逐行读取数据
+        while (!$body->eof()) {
+            echo $body->read(1024); // 读取流中的数据
+        }
     }
-    // 关闭流
-    $stream->close();
-}
 
+}
 ```
 
